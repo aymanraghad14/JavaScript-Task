@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Simple Game</title>
+        <link rel ="stylesheet" href="style.css">
+        
+  <script src ="script.js"></script>
+       
+    </head>
+    <body>
+    <div class="container">
+        <h1>🎲 Dice Game</h1>
+        
+        <div class="game-container">
+            <div class="player-panel active" id="player1">
+                <h2>Player 1</h2>
+                <div class="score" id="score1">0</div>
+                <div class="current-box">
+                    <p>Current Score</p>
+                    <div class="current-score" id="current1">0</div>
+                </div>
+            </div>
+            
+            <div class="dice-container">
+                <img src="./images/dice-six-faces-one.png" alt="Dice" class="dice" id="diceImage" >
+            </div>
+            
+            <div class="player-panel" id="player2">
+                <h2>Player 2</h2>
+                <div class="score" id="score2">0</div>
+                <div class="current-box">
+                    <p>Current Score</p>
+                    <div class="current-score" id="current2">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="btnRoll" class="btn">🎲 Roll Dice</button>
+            <button id="btnHold" class="btn">📥 Hold</button>
+            <button id="btnNewGame" class="btn">🔄 New Game</button>
+        </div>
+        
+
+        <div class="hidden-dice">
+            <img src="./images/dice-six-faces-one.png" alt="Dice 1" class="dice" id="dice-1" style="display: block;">
+            <img src="./images/dice-six-faces-two.png" alt="Dice 2" class="dice" id="dice-2"style="display: block;">
+            <img src="./images/dice-six-faces-three.png" alt="Dice 3" class="dice" id="dice-3"style="display: block;">
+            <img src="./images/dice-six-faces-four.png" alt="Dice 4" class="dice" id="dice-4"style="display: block;">
+            <img src="./images/dice-six-faces-five.png" alt="Dice 5" class="dice" id="dice-5"style="display: block;">
+            <img src="./images/dice-six-faces-six.png" alt="Dice 6" class="dice" id="dice-6"style="display: block;">
+        </div>
+    </div>
+
+    </body>
+</html>
