@@ -5,19 +5,6 @@ A dynamic, interactive dice rolling game built with JavaScript, CSS3, and HTML5.
 ![Game Demo]<img width="1875" height="856" alt="Screenshot (734)" src="https://github.com/user-attachments/assets/9cf73b29-9359-4ddb-bebf-3d2cbb1de7e8" />
 <img width="1876" height="901" alt="Screenshot (736)" src="https://github.com/user-attachments/assets/58ddda72-d418-410a-9b83-cd833bef0283" />
 
-
-
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [Technologies Used](#-technologies-used)
-- [Getting Started](#-getting-started)
-- [How to Play](#-how-to-play)
-- [Game Rules](#-game-rules)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [License](#-license)
-
 ## ✨ Features
 
 ### 🎮 Core Gameplay
@@ -93,24 +80,6 @@ dice-roll-game/
 └── 📄 LICENSE             # License file
 ```
 
-## 🎨 Customization
-
-### 🎯 Game Settings
-```javascript
-// In script.js - Modify these constants
-const WINNING_SCORE = 100;    // Change target score
-const ANIMATION_DURATION = 600; // Dice roll animation time
-```
-
-### 🎨 Styling
-```css
-/* In styles.css - Customize colors */
-:root {
-  --primary-color: #FF6B6B;
-  --secondary-color: #4ECDC4;
-  --accent-color: #45B7D1;
-}
-...
 
 ### 💡 Feature Requests
 - Check existing issues first
@@ -118,4 +87,4 @@ const ANIMATION_DURATION = 600; // Dice roll animation time
 - Consider implementation complexity
 
 
-Made with ❤️ and lots of ☕
+Made with ❤️ 
