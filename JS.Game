@@ -1,0 +1,164 @@
+document.addEventListener('DOMContentLoaded', function() {
+   
+    const diceElements = document.querySelectorAll('.dice'); 
+    const diceImage = document.getElementById('diceImage'); 
+    const player1Panel = document.getElementById('player1');
+    const player2Panel = document.getElementById('player2');
+    const score1 = document.getElementById('score1');
+    const score2 = document.getElementById('score2');
+    const btnRoll = document.getElementById('btnRoll');
+    const btnHold = document.getElementById('btnHold');
+    const btnNewGame = document.getElementById('btnNewGame');
+    const winnerModal = document.getElementById('winnerModal');
+    const winnerText = document.getElementById('winnerText');
+
+    let currentPlayer = 1;
+    let totalScores = [0, 0];
+    let currentScore = 0;
+    let gameActive = true;
+    let customDiceImages = [];
+
+    
+    const defaultDiceImages = [
+             './Task/images/dice-six-faces-one.png',
+        './Task/images/dice-six-faces-two.png',
+        './Task/images/dice-six-faces-three.png',
+        './Task/images/dice-six-faces-four.png',
+        './Task/images/dice-six-faces-five.png',
+        './Task/images/dice-six-faces-six.png'
+    ];
+
+   
+
+   
+    function initGame() {
+        diceElements.forEach(img => img.style.display = 'none');
+        currentScore = 0;
+        totalScores = [0, 0];
+        currentPlayer = 1;
+        gameActive = true;
+      
+      
+        score1.textContent = '0';
+        score2.textContent = '0';
+        document.getElementById('current1').textContent = '0';
+        document.getElementById('current2').textContent = '0';
+        
+    
+        player1Panel.classList.add('active');
+        player2Panel.classList.remove('active');
+        player1Panel.classList.remove('winner');
+        player2Panel.classList.remove('winner');
+
+        
+        if (diceImage) {
+            const imageSrc = customDiceImages.length >= 6 ? 
+                customDiceImages[0] : 
+                defaultDiceImages[0];
+            diceImage.src = imageSrc;
+        }
+    }
+         
+
+    function highlightCurrentPlayer() {
+        if (currentPlayer === 1) {
+            player1Panel.classList.add('active');
+            player2Panel.classList.remove('active');
+        } else {
+            player1Panel.classList.remove('active');
+            player2Panel.classList.add('active');
+        }
+    }
+
+    
+    function updateCurrentScore() {
+        const currentScoreElement = document.getElementById(`current${currentPlayer}`);
+        if (currentScoreElement) {
+            currentScoreElement.textContent = currentScore;
+        }
+    }
+
+  
+    function switchPlayer() {
+        currentScore = 0;
+        currentPlayer = currentPlayer === 1 ? 2 : 1;
+        
+       
+        document.getElementById('current1').textContent = '0';
+        document.getElementById('current2').textContent = '0';
+        
+        highlightCurrentPlayer();
+    }
+
+   
+    function rollDice() {
+        if (!gameActive) return;
+        
+        const dice = Math.floor(Math.random() * 6) + 1;
+        
+        
+        diceElements.forEach(img => img.style.display = 'none');
+        const activeDiceImage = document.getElementById(`dice-${dice}`);
+        if (activeDiceImage) {
+            activeDiceImage.style.display = 'inline-block';
+        }
+
+        
+        if (diceImage) {
+            const imageSrc = customDiceImages.length >= 6 ? 
+                customDiceImages[dice - 1] : 
+                defaultDiceImages[dice - 1];
+            diceImage.src = imageSrc;
+        }
+        
+        
+        if (dice !== 1) {
+            currentScore += dice;
+            updateCurrentScore();
+        } else {
+            
+            switchPlayer();
+        }
+    }
+
+   
+    function hold() {
+        if (!gameActive) return;
+        
+      
+        totalScores[currentPlayer - 1] += currentScore;
+        
+      
+        if (currentPlayer === 1) {
+            score1.textContent = totalScores[0];
+        } else {
+            score2.textContent = totalScores[1];
+        }
+    
+       
+        if (totalScores[currentPlayer - 1] >= 100) {
+            const winnerPanel = document.getElementById(`player${currentPlayer}`);
+            winnerPanel.classList.add('winner');
+            gameActive = false;
+            return;
+        }
+        
+        switchPlayer();
+    }
+
+   
+    if (btnRoll) {
+        btnRoll.addEventListener('dblclick', rollDice);
+    }
+
+    if (btnHold) {
+        btnHold.addEventListener('dblclick', hold);
+    }
+
+    if (btnNewGame) {
+        btnNewGame.addEventListener('click', initGame);
+    }
+ 
+   
+    initGame();
+});
