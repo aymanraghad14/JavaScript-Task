@@ -1,0 +1,232 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            background-color: rgb(112, 8, 64);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            background-color: rgb(209, 57, 138);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .hidden-dice{
+            background-size:contain;
+            display: auto;
+            cursor: auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center; 
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .player-panel {
+            background-color: rgb(209, 57, 138);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            width: 300px; 
+            transition: all 0.3s ease;
+        }
+
+        .player-panel.active {
+            background-color: rgb(112, 8, 64);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .player-panel.winner {
+            background-color: #4CAF50;
+            animation: winner-glow 1s infinite alternate;
+        }
+
+        @keyframes winner-glow {
+            from { box-shadow: 0 0 20px #4CAF50; }
+            to { box-shadow: 0 0 30px #81C784; }
+        }
+
+        .player-panel h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .score {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .current-box {
+            background-color: rgb(112, 8, 64);
+            color: azure;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .current-box p {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .current-score {
+            font-size: 2em;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .dice-container {
+            text-align: center;
+            margin: 30px 0;
+            flex-shrink: 0; 
+        }
+        
+           
+      .hidden-dice {
+    position: relative;  
+     left: -999;          
+    visibility: visible;
+    display: block;
+    text-align:center;
+        
+}
+        .dice {
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+
+        .dice.rolling {
+            animation: roll 0.6s ease-in-out;
+        }
+
+        @keyframes roll {
+            0% { transform: rotateX(0) rotateY(0); }
+            50% { transform: rotateX(180deg) rotateY(180deg) scale(1.1); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .controls {
+            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border-radius: 25px;
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        #btnRoll {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #btnHold {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #btnNewGame {
+            background-color: rgb(112, 8, 64);
+            color: white;
+        }
+
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .game-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .player-panel {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+            }
+
+            .dice {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .score {
+                font-size: 2.5em;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+        }
